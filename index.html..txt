@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Preço de Adesivos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 30px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #d32f2f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #b71c1c;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Calculadora de Adesivos</h2>
+    <label>Largura (cm):</label>
+    <input type="number" id="largura" placeholder="Ex: 50">
+    
+    <label>Altura (cm):</label>
+    <input type="number" id="altura" placeholder="Ex: 30">
+    
+    <label>Preço por m² (R$):</label>
+    <input type="number" id="preco" placeholder="Ex: 50" value="50">
+    
+    <button onclick="calcular()">Calcular</button>
+    
+    <div class="resultado" id="resultado"></div>
+  </div>
+
+  <script>
+    function calcular() {
+      let largura = document.getElementById("largura").value;
+      let altura = document.getElementById("altura").value;
+      let preco = document.getElementById("preco").value;
+
+      if(largura > 0 && altura > 0 && preco > 0){
+        let area = (largura/100) * (altura/100);
+        let valor = area * preco;
+        document.getElementById("resultado").innerHTML = 
+          "Preço: R$ " + valor.toFixed(2);
+      } else {
+        document.getElementById("resultado").innerHTML = 
+          "Preencha todos os campos corretamente.";
+      }
+    }
+  </script>
+</body>
+</html>
